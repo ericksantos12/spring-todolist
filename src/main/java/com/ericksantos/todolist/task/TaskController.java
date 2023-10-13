@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ericksantos.todolist.utils.Utils;
 
-import io.micrometer.core.ipc.http.HttpSender.Response;
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
@@ -54,7 +53,7 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity update(@RequestBody TaskModel taskModel, @PathVariable UUID id, HttpServletRequest request) {
+    public ResponseEntity<?> update(@RequestBody TaskModel taskModel, @PathVariable UUID id, HttpServletRequest request) {
 
         var task = this.taskRepository.findById(id).orElse(null);
 
